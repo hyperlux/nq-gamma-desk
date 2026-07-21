@@ -45,54 +45,20 @@ fi
 
 git commit -m "$MSG"
 # Prefer gh-authenticated https remote
+# NOTE: do NOT commit GitHub Actions workflows — OAuth token lacks `workflow` scope.
 git push -u origin HEAD:main
 
-# Enable pages if needed (idempotent)
-gh api repos/hyperlux/nq-gamma-desk/pages >/dev/null 2>&1 || \
+# Enable classic Pages (branch main, root) if not already configured
+if ! gh api repos/hyperlux/nq-gamma-desk/pages >/dev/null 2>&1; then
   gh api -X POST repos/hyperlux/nq-gamma-desk/pages \
-    -f build_type=workflow \
-    -f source[branch]=main \
-    -f source[path]=/ 2>/dev/null || \
-  gh api -X POST repos/hyperlux/nq-gamma-desk/pages \
+    -H "Accept: application/vnd.github+json" \
     --input - <<'JSON' >/dev/null 2>&1 || true
-{"build_type":"legacy","source":{"branch":"main","path":"/"}}
+{"source":{"branch":"main","path":"/"}}
 JSON
-
-# Ensure pages from main root via actions or legacy
-if [[ ! -f .github/workflows/pages.yml ]]; then
-  mkdir -p .github/workflows
-  cat > .github/workflows/pages.yml <<'YAML'
-name: Deploy GitHub Pages
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: deployment
-        uses: actions/deploy-pages@v4
-YAML
-  git add .github/workflows/pages.yml
-  git commit -m "ci: GitHub Pages deploy workflow" || true
-  git push origin HEAD:main || true
 fi
+
+# Homepage link on repo
+gh repo edit hyperlux/nq-gamma-desk --homepage "https://hyperlux.github.io/nq-gamma-desk/" >/dev/null 2>&1 || true
 
 echo "Published. Site: https://hyperlux.github.io/nq-gamma-desk/"
 echo "Repo:  https://github.com/hyperlux/nq-gamma-desk"
