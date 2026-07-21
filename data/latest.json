@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "symbol": "NQ=F",
+    "title": "NQ Gamma Desk",
+    "generated_at_utc": "2026-07-21T08:39:14.871195+00:00",
+    "generated_at_et": "2026-07-21 04:39 EDT",
+    "as_of": "2026-07-21T07:19:48.3366275Z",
+    "source": "FlashAlpha",
+    "report_dir": "/home/clawdbot/systems/trading/nq_report_20260721_071947",
+    "plan": "growth",
+    "usage_today": 5,
+    "remaining": "2495",
+    "requests_this_pull": 13,
+    "disclaimer": "Not investment advice. Dealer-positioning model from FlashAlpha; NQ options-on-futures via Black-76."
+  },
+  "spot": {
+    "price": 29125.625,
+    "regime": "negative_gamma",
+    "local_regime": "negative_gamma",
+    "gamma_flip": 29128.545082901,
+    "spot_vs_flip": "below",
+    "distance_to_flip": -2.920082901000569,
+    "net_gex": -79410858.19619033,
+    "net_gex_display": "-79.41M",
+    "net_dex": -2381995056.5863633,
+    "net_dex_display": "-2.38B",
+    "net_vex": 5538015022.054276,
+    "net_vex_display": "+5.54B",
+    "net_chex": -9603.8379896252,
+    "net_chex_display": "-9.6K",
+    "bias": "FLIP-ZONE / NEGATIVE GAMMA",
+    "bias_detail": "Two-way risk at the hinge \u2014 small acceptance away from flip can trend.",
+    "bias_tone": "warn"
+  },
+  "levels": {
+    "call_wall": 30000.0,
+    "put_wall": 28000.0,
+    "gamma_flip": 29128.545082901,
+    "max_positive_gamma": 31000.0,
+    "max_negative_gamma": 28000.0,
+    "highest_oi_strike": 28000.0,
+    "zero_dte_magnet": 29400.0,
+    "max_pain": 29210.0,
+    "max_pain_expiration": "2026-07-07",
+    "max_pain_signal": "neutral",
+    "max_pain_distance": {
+      "absolute": 84.38,
+      "percent": 0.29,
+      "direction": "below"
+    },
+    "put_call_oi_ratio": 1.33
+  },
+  "ladder": [
+    {
+      "price": 31000.0,
+      "label": "Max +GEX",
+      "kind": "pos_gex",
+      "emphasis": false,
+      "note": "Local positive gamma node",
+      "dist": 1874.375
+    },
+    {
+      "price": 30000.0,
+      "label": "Call wall",
+      "kind": "call_wall",
+      "emphasis": true,
+      "note": "Remote resistance / dealer call concentration",
+      "dist": 874.375
+    },
+    {
+      "price": 29400.0,
+      "label": "0DTE magnet",
+      "kind": "magnet",
+      "emphasis": false,
+      "note": "Pin score 27/100 \u2014 weak",
+      "dist": 274.375
+    },
+    {
+      "price": 29343.78,
+      "label": "0DTE +1\u03c3",
+      "kind": "em_up",
+      "emphasis": true,
+      "note": "Same-day upper expected move",
+      "dist": 218.15499999999884
+    },
+    {
+      "price": 29210.0,
+      "label": "Max pain",
+      "kind": "pain",
+      "emphasis": true,
+      "note": "Expiry 2026-07-07",
+      "dist": 84.375
+    },
+    {
+      "price": 29128.545082901,
+      "label": "Gamma flip",
+      "kind": "flip",
+      "emphasis": true,
+      "note": "Regime line \u2014 primary hinge",
+      "dist": 2.920082901000569
+    },
+    {
+      "price": 29125.625,
+      "label": "Spot",
+      "kind": "spot",
+      "emphasis": true,
+      "note": "Last underlying",
+      "dist": 0.0
+    },
+    {
+      "price": 29025.0,
+      "label": "0DTE max pain",
+      "kind": "pain",
+      "emphasis": false,
+      "note": "Same-day pain",
+      "dist": -100.625
+    },
+    {
+      "price": 28907.47,
+      "label": "0DTE \u22121\u03c3",
+      "kind": "em_dn",
+      "emphasis": true,
+      "note": "Same-day lower expected move",
+      "dist": -218.15499999999884
+    },
+    {
+      "price": 28000.0,
+      "label": "Max \u2212GEX \u00b7 Put wall \u00b7 Highest OI",
+      "kind": "neg_gex",
+      "emphasis": true,
+      "note": "Local negative gamma node",
+      "dist": -1125.625
+    }
+  ],
+  "zero_dte": {
+    "expiration": "2026-07-21",
+    "market_open": false,
+    "time_to_close_hours": 12.67,
+    "regime": {
+      "label": "positive_gamma",
+      "description": "Dealers long gamma \u2014 moves dampened, mean reversion likely",
+      "gamma_flip": 29108.2014259883,
+      "spot_vs_flip": "above",
+      "spot_to_flip_pct": 0.06,
+      "distance_to_flip_dollars": 17.4236,
+      "distance_to_flip_sigmas": 0.08
+    },
+    "net_gex": 210184314.97006425,
+    "net_gex_display": "+210.18M",
+    "pct_of_total_gex": 264.7,
+    "pin_score": 27.0,
+    "pin_quality": "weak",
+    "magnet": 29400.0,
+    "max_pain": 29025.0,
+    "em_1sd": 218.155,
+    "em_1sd_pct": 0.749,
+    "em_upper": 29343.78,
+    "em_lower": 28907.47,
+    "atm_iv": 0.27497,
+    "straddle": 243.0,
+    "description": "Weak pin at 29400. 27/100 pin score with 10.9% of OI in top 3 strikes.",
+    "components": {
+      "oi_score": 22,
+      "proximity_score": 0,
+      "time_score": 0,
+      "gamma_score": 100
+    },
+    "empty_book": false,
+    "note": "Pin is weak; treat magnet as soft target."
+  },
+  "flow": {
+    "direction": "no_flow",
+    "live_gex": -79410858.19619033,
+    "live_gex_display": "-79.41M",
+    "flow_gex_pct_shift": 0.0,
+    "contracts_with_flow": 0,
+    "contracts_total": 13131,
+    "live_gamma_flip": 29128.545082901,
+    "live_call_wall": 30000.0,
+    "live_put_wall": 28000.0,
+    "live_max_pain": 29210.0,
+    "live_pin_risk": 27.0,
+    "magnet_strike": 29400.0,
+    "authoritative": "settled"
+  },
+  "qqq_proxy": {
+    "spot": 695.95,
+    "gamma_flip": 708.375366193843,
+    "call_wall": 700.0,
+    "put_wall": 690.0,
+    "zero_dte_magnet": 695.0,
+    "max_positive_gamma": 730.0,
+    "max_negative_gamma": 690.0,
+    "pin_score": 29.0,
+    "magnet": 695.0,
+    "max_pain": 705.0,
+    "em_1sd": 7.1631,
+    "em_upper": 703.1131,
+    "em_lower": 688.7869
+  },
+  "vix": {
+    "level": 17.5,
+    "spx_rv_20d": 10.38,
+    "spread": 7.119999999999999,
+    "ratio": 1.6859344894026973,
+    "state": "overvixing",
+    "interpretation": "VIX trades 7.1pp above SPX 20d realized \u2014 premium rich, favours short-vol setups."
+  },
+  "interpretation": {
+    "gamma": "Dealers short gamma \u2014 moves amplified, trend following likely",
+    "vanna": "Vol up = dealers buy delta \u2014 downside dampened if vol spikes",
+    "charm": "Time decay pushing dealers to sell \u2014 pressure into close"
+  },
+  "hedging_estimate": {
+    "spot_down_1pct": {
+      "dealer_shares_to_trade": -2726,
+      "direction": "sell",
+      "notional_usd": -79410858
+    },
+    "spot_up_1pct": {
+      "dealer_shares_to_trade": 2726,
+      "direction": "buy",
+      "notional_usd": 79410858
+    }
+  },
+  "narrative": {
+    "regime": "Dealers are short gamma (net GEX -$79.4M) \u2014 expect amplified, trend-following price action. Dealers buy rallies and sell dips, adding to momentum. VIX at 17.5.",
+    "gex_change": "Net GEX is -$79.4M. No prior day data available for comparison.",
+    "key_levels": "Call wall at 30000, Put wall at 28000, Gamma flip at 29129. Spot near gamma flip \u2014 regime change imminent.",
+    "flow": "No prior day OI data available for flow analysis.",
+    "vanna": "Positive vanna (+$5.5B) with VIX at 17.5 \u2014 vol compression supports upside via dealer buying. Low VIX amplifies this tailwind.",
+    "charm": "Negative charm (-$10K) \u2014 time decay pushing dealers to sell, adding pressure into close.",
+    "zero_dte": "0DTE accounts for -265% of total GEX \u2014 minimal intraday impact.",
+    "outlook": "Negative gamma regime \u2014 heightened move risk."
+  },
+  "expected_moves": [
+    {
+      "expiry": "2026-07-21",
+      "dte": 0,
+      "atm_iv": 0.2749704935432222,
+      "move": 0.0,
+      "move_pct": 0.0,
+      "lower": 29125.625,
+      "upper": 29125.625
+    },
+    {
+      "expiry": "2026-07-22",
+      "dte": 1,
+      "atm_iv": 0.2522866633732531,
+      "move": 384.6123,
+      "move_pct": 1.3205,
+      "lower": 28741.0127,
+      "upper": 29510.2373
+    },
+    {
+      "expiry": "2026-07-23",
+      "dte": 2,
+      "atm_iv": 0.26546924047945086,
+      "move": 572.3452,
+      "move_pct": 1.9651,
+      "lower": 28553.2798,
+      "upper": 29697.9702
+    },
+    {
+      "expiry": "2026-07-24",
+      "dte": 3,
+      "atm_iv": 0.26699762167974816,
+      "move": 705.0125,
+      "move_pct": 2.4206,
+      "lower": 28420.6125,
+      "upper": 29830.6375
+    },
+    {
+      "expiry": "2026-07-27",
+      "dte": 6,
+      "atm_iv": 0.22701693582970173,
+      "move": 847.7401,
+      "move_pct": 2.9106,
+      "lower": 28277.8849,
+      "upper": 29973.3651
+    },
+    {
+      "expiry": "2026-07-28",
+      "dte": 7,
+      "atm_iv": 0.23271993885146636,
+      "move": 938.6668,
+      "move_pct": 3.2228,
+      "lower": 28186.9582,
+      "upper": 30064.2918
+    },
+    {
+      "expiry": "2026-07-29",
+      "dte": 8,
+      "atm_iv": 0.2450236263042345,
+      "move": 1056.5299,
+      "move_pct": 3.6275,
+      "lower": 28069.0951,
+      "upper": 30182.1549
+    },
+    {
+      "expiry": "2026-07-30",
+      "dte": 9,
+      "atm_iv": 0.25703278638455984,
+      "move": 1175.5432,
+      "move_pct": 4.0361,
+      "lower": 27950.0818,
+      "upper": 30301.1682
+    },
+    {
+      "expiry": "2026-07-31",
+      "dte": 10,
+      "atm_iv": 0.2646812145415019,
+      "move": 1276.0037,
+      "move_pct": 4.381,
+      "lower": 27849.6213,
+      "upper": 30401.6287
+    },
+    {
+      "expiry": "2026-08-03",
+      "dte": 13,
+      "atm_iv": 0.2467763455554063,
+      "move": 1356.4507,
+      "move_pct": 4.6572,
+      "lower": 27769.1743,
+      "upper": 30482.0757
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "A",
+      "name": "Flip reclaim & hold",
+      "side": "long",
+      "tone": "bull",
+      "trigger": "15\u201330m acceptance above ~29154\u201329184 after clearing flip",
+      "entry_zone": [
+        29149,
+        29189
+      ],
+      "targets": [
+        29210,
+        29344,
+        29400
+      ],
+      "invalidation": 29086,
+      "invalidation_note": "Back below ~29101 with momentum",
+      "why": "Leaving the negative-gamma hinge reduces forced dealer sell-rallies; pain/magnet sit overhead."
+    },
+    {
+      "id": "B",
+      "name": "Flip reject / downside expansion",
+      "side": "short",
+      "tone": "bear",
+      "trigger": "Failure at flip and acceptance below ~29081\u201329051",
+      "entry_zone": [
+        29046,
+        29086
+      ],
+      "targets": [
+        28907,
+        28000
+      ],
+      "invalidation": 29179,
+      "invalidation_note": "Swift reclaim >29179",
+      "why": "Short gamma can accelerate dips; no hard put wall until remote put wall."
+    },
+    {
+      "id": "C",
+      "name": "Chop / mean-test (base pre-flow)",
+      "side": "range",
+      "tone": "neutral",
+      "trigger": "Price holds inside 0DTE 1\u03c3 with tests of flip / max pain; flow still quiet",
+      "entry_zone": [
+        28907,
+        29344
+      ],
+      "targets": [
+        29129,
+        29210
+      ],
+      "invalidation": null,
+      "invalidation_note": "Impulsive break beyond 1\u03c3 with rising live flow shift",
+      "why": "Pin quality is weak (27/100) \u2014 do not lean on magnet as a hard pin day."
+    }
+  ],
+  "scalp_checklist": [
+    "Mark gamma flip as the regime line \u2014 acceptance matters more than wicks.",
+    "Trade the flip corridor + 0DTE 1\u03c3 + max pain first; remote 28k/30k walls are day-trade noise unless extended.",
+    "If flow is no_flow, settled GEX is boss until contracts_with_flow rises after cash open.",
+    "Weak pin (<40) = do not fade solely because of magnet; wait for structure.",
+    "Short gamma: reduce size into impulsive breaks; avoid averaging losers into acceleration.",
+    "VIX rich \u2260 calm when net GEX is negative \u2014 premium can stay bid while NQ trends.",
+    "Re-pull lean stack after NY open if levels look stale or spot left the corridor."
+  ]
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="NQ=F gamma levels scalping desk — FlashAlpha dealer positioning gameplan"
+    />
+    <title>NQ Gamma Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/desk.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235e6ad2'/%3E%3Cpath d='M8 22 L16 8 L24 22' stroke='%23f7f8f8' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-row">
+            <div class="logo-mark" aria-hidden="true"></div>
+            <h1>NQ Gamma Desk</h1>
+          </div>
+          <div class="sub">FlashAlpha dealer positioning · scalping gameplan for NQ=F</div>
+        </div>
+        <div class="meta-pills">
+          <span class="pill live"><span class="dot"></span><span id="source">FlashAlpha · NQ=F</span></span>
+          <span class="pill"><span class="dot"></span><span id="as-of">as of —</span></span>
+          <span class="pill"><span class="dot"></span><span id="generated">—</span></span>
+          <span class="pill warn"><span class="dot"></span><span id="quota">quota n/a</span></span>
+        </div>
+      </header>
+
+      <div id="boot" class="loading">Loading latest gamma pull…</div>
+
+      <main id="app" hidden>
+        <section class="hero">
+          <div class="card bias-card" id="bias-card">
+            <h2>Day bias</h2>
+            <div class="bias-title" id="bias-title">—</div>
+            <p class="bias-detail" id="bias-detail"></p>
+            <div class="stat-grid">
+              <div class="stat">
+                <span class="k">Net GEX</span>
+                <span class="v" id="stat-gex">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">Gamma flip</span>
+                <span class="v" id="stat-flip">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">0DTE 1σ</span>
+                <span class="v" id="stat-em">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">Pin score</span>
+                <span class="v" id="stat-pin">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">Flow</span>
+                <span class="v" id="stat-flow">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">VIX</span>
+                <span class="v" id="stat-vix">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">Max pain</span>
+                <span class="v" id="stat-pain">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">0DTE magnet</span>
+                <span class="v" id="stat-magnet">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Underlying</h2>
+            <div class="spot-big" id="spot-price">—</div>
+            <div class="spot-sub" id="spot-sub">—</div>
+            <p class="section-note" style="margin: 0">
+              Primary hinge is <strong style="color: #e9d5ff">gamma flip</strong>. Acceptance above/below
+              matters more than wicks. Remote walls are context, not default scalp targets.
+            </p>
+          </div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <h2>Level ladder</h2>
+            <p class="section-note" id="ladder-note">Settled OI levels + 0DTE envelope</p>
+            <div class="ladder">
+              <div class="ladder-track" id="ladder-track"></div>
+            </div>
+            <div class="ladder-legend">
+              <span class="l-flip">Flip</span>
+              <span class="l-pain">Max pain</span>
+              <span class="l-magnet">Magnet</span>
+              <span class="l-call">Call / +GEX / +1σ</span>
+              <span class="l-put">Put / −GEX / −1σ</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Scalp scenarios</h2>
+            <p class="section-note">Triggers · zones · invalidations — not signals to auto-fire</p>
+            <div class="scenarios" id="scenarios"></div>
+          </div>
+        </section>
+
+        <section class="grid-3">
+          <div class="card">
+            <h2>Key levels</h2>
+            <div class="kv" id="kv-levels"></div>
+          </div>
+          <div class="card">
+            <h2>0DTE structure</h2>
+            <div class="kv" id="kv-0dte"></div>
+          </div>
+          <div class="card">
+            <h2>Live flow</h2>
+            <div class="kv" id="kv-flow"></div>
+          </div>
+        </section>
+
+        <section class="grid-3">
+          <div class="card">
+            <h2>QQQ cash proxy</h2>
+            <div class="kv" id="kv-qqq"></div>
+          </div>
+          <div class="card">
+            <h2>VIX regime</h2>
+            <div class="kv" id="kv-vix"></div>
+            <p class="section-note" id="vix-interp" style="margin-top: 12px"></p>
+          </div>
+          <div class="card">
+            <h2>Expected move term</h2>
+            <div style="overflow-x: auto">
+              <table class="em">
+                <thead>
+                  <tr>
+                    <th>Expiry</th>
+                    <th>DTE</th>
+                    <th>IV</th>
+                    <th>1σ</th>
+                    <th>Lo</th>
+                    <th>Hi</th>
+                  </tr>
+                </thead>
+                <tbody id="em-body"></tbody>
+              </table>
+            </div>
+            <p class="section-note" style="margin-top: 10px">
+              Prefer 0DTE endpoint 1σ for same-day envelope if the DTE=0 row looks flat/zero.
+            </p>
+          </div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <h2>Narrative &amp; dealer read</h2>
+            <div class="narrative" id="narrative"></div>
+          </div>
+          <div class="card">
+            <h2>Scalp checklist</h2>
+            <ul class="checklist" id="checklist"></ul>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div id="disclaimer">Not investment advice.</div>
+          <div>
+            <a href="https://github.com/hyperlux/nq-gamma-desk">Repo</a>
+            · updated via Hermes + FlashAlpha
+          </div>
+        </footer>
+      </main>
+    </div>
+    <script src="js/desk.js"></script>
+  </body>
+</html>
