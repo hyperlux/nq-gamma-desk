@@ -26,13 +26,14 @@
             <div class="logo-mark" aria-hidden="true"></div>
             <h1>NQ Gamma Desk</h1>
           </div>
-          <div class="sub">FlashAlpha dealer positioning · scalping gameplan for NQ=F</div>
+          <div class="sub">FlashAlpha full stack · NASDAQ futures scalping narrative</div>
         </div>
         <div class="meta-pills">
           <span class="pill live"><span class="dot"></span><span id="source">FlashAlpha · NQ=F</span></span>
           <span class="pill"><span class="dot"></span><span id="as-of">as of —</span></span>
           <span class="pill"><span class="dot"></span><span id="generated">—</span></span>
           <span class="pill warn"><span class="dot"></span><span id="quota">quota n/a</span></span>
+          <span class="pill" id="depth-pill"><span class="dot"></span><span id="depth">depth —</span></span>
         </div>
       </header>
 
@@ -48,6 +49,10 @@
               <div class="stat">
                 <span class="k">Net GEX</span>
                 <span class="v" id="stat-gex">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">Local ±1k</span>
+                <span class="v" id="stat-local">—</span>
               </div>
               <div class="stat">
                 <span class="k">Gamma flip</span>
@@ -77,6 +82,18 @@
                 <span class="k">0DTE magnet</span>
                 <span class="v" id="stat-magnet">—</span>
               </div>
+              <div class="stat">
+                <span class="k">DEX</span>
+                <span class="v" id="stat-dex">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">VEX</span>
+                <span class="v" id="stat-vex">—</span>
+              </div>
+              <div class="stat">
+                <span class="k">ATM IV</span>
+                <span class="v" id="stat-iv">—</span>
+              </div>
             </div>
           </div>
 
@@ -84,17 +101,23 @@
             <h2>Underlying</h2>
             <div class="spot-big" id="spot-price">—</div>
             <div class="spot-sub" id="spot-sub">—</div>
+            <p class="section-note" id="session-note" style="margin: 0 0 12px"></p>
             <p class="section-note" style="margin: 0">
               Primary hinge is <strong style="color: #e9d5ff">gamma flip</strong>. Acceptance above/below
-              matters more than wicks. Remote walls are context, not default scalp targets.
+              matters more than wicks. Use local corridor GEX + nearest shelves for scalps; remote walls are architecture.
             </p>
           </div>
+        </section>
+
+        <section class="card narrative-board">
+          <h2>Scalping narrative</h2>
+          <div class="bullets" id="narrative-bullets"></div>
         </section>
 
         <section class="grid-2">
           <div class="card">
             <h2>Level ladder</h2>
-            <p class="section-note" id="ladder-note">Settled OI levels + 0DTE envelope</p>
+            <p class="section-note" id="ladder-note">Settled OI levels + 0DTE envelope + nearest GEX nodes</p>
             <div class="ladder">
               <div class="ladder-track" id="ladder-track"></div>
             </div>
@@ -109,8 +132,24 @@
 
           <div class="card">
             <h2>Scalp scenarios</h2>
-            <p class="section-note">Triggers · zones · invalidations — not signals to auto-fire</p>
+            <p class="section-note">Triggers · zones · invalidations — discretionary only</p>
             <div class="scenarios" id="scenarios"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>GEX profile <span class="h2-sub">strike map near spot</span></h2>
+          <p class="section-note" id="gex-profile-note">Net GEX by strike — green = dealer long gamma / red = short</p>
+          <div class="gex-chart" id="gex-chart"></div>
+          <div class="grid-2 tight" style="margin-top: 14px; margin-bottom: 0">
+            <div>
+              <h3 class="mini-h">Nearest +GEX</h3>
+              <div class="mini-table" id="pos-near"></div>
+            </div>
+            <div>
+              <h3 class="mini-h">Nearest −GEX (fuel)</h3>
+              <div class="mini-table" id="neg-near"></div>
+            </div>
           </div>
         </section>
 
@@ -126,6 +165,32 @@
           <div class="card">
             <h2>Live flow</h2>
             <div class="kv" id="kv-flow"></div>
+            <p class="section-note" id="flow-dealer-note" style="margin-top: 12px"></p>
+          </div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <h2>GEX peaks <span class="h2-sub">architecture</span></h2>
+            <div class="mini-table" id="peaks-table"></div>
+          </div>
+          <div class="card">
+            <h2>OI changes <span class="h2-sub">vs prior snapshot</span></h2>
+            <div class="kv" id="kv-oi-totals" style="margin-bottom: 10px"></div>
+            <div class="mini-table" id="oi-table"></div>
+          </div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <h2>Term structure <span class="h2-sub">GEX by DTE</span></h2>
+            <div class="bars" id="term-bars"></div>
+            <div class="mini-table" id="term-expiry" style="margin-top: 12px"></div>
+          </div>
+          <div class="card">
+            <h2>Volatility &amp; skew</h2>
+            <div class="kv" id="kv-vol"></div>
+            <div class="mini-table" id="skew-table" style="margin-top: 12px"></div>
           </div>
         </section>
 
@@ -133,11 +198,25 @@
           <div class="card">
             <h2>QQQ cash proxy</h2>
             <div class="kv" id="kv-qqq"></div>
+            <p class="section-note" id="qqq-narr" style="margin-top: 12px"></p>
+          </div>
+          <div class="card">
+            <h2>NDX cross-check</h2>
+            <div class="kv" id="kv-ndx"></div>
+            <p class="section-note" id="ndx-interp" style="margin-top: 12px"></p>
           </div>
           <div class="card">
             <h2>VIX regime</h2>
             <div class="kv" id="kv-vix"></div>
             <p class="section-note" id="vix-interp" style="margin-top: 12px"></p>
+          </div>
+        </section>
+
+        <section class="grid-2">
+          <div class="card">
+            <h2>P/C profile &amp; hedge scenarios</h2>
+            <div class="mini-table" id="pc-table"></div>
+            <div class="mini-table" id="hedge-table" style="margin-top: 12px"></div>
           </div>
           <div class="card">
             <h2>Expected move term</h2>

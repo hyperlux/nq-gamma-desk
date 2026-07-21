@@ -31,7 +31,7 @@
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.35);
-  --max: 1180px;
+  --max: 1280px;
 }
 
 *,
@@ -224,6 +224,12 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
+}
+
+@media (min-width: 1100px) {
+  .stat-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -671,4 +677,230 @@ table.em td:first-child {
   margin: -4px 0 12px;
   font-size: 12px;
   color: var(--text-4);
+}
+
+.h2-sub {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-4);
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+.mini-h {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 510;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.narrative-board {
+  margin-bottom: 14px;
+}
+
+.bullets {
+  display: grid;
+  gap: 8px;
+}
+
+.bullet {
+  position: relative;
+  padding: 10px 12px 10px 28px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.015);
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.45;
+}
+
+.bullet::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 15px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(113, 112, 255, 0.15);
+}
+
+.bullet strong {
+  color: var(--text);
+  font-weight: 590;
+}
+
+.grid-2.tight {
+  gap: 12px;
+}
+
+/* GEX profile chart */
+.gex-chart {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.gex-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  min-height: 160px;
+  min-width: 640px;
+  padding: 8px 2px 0;
+}
+
+.gex-col {
+  flex: 1 1 0;
+  min-width: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.gex-col .bar-wrap {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.gex-col .bar {
+  width: 70%;
+  min-width: 4px;
+  max-width: 18px;
+  border-radius: 3px 3px 1px 1px;
+  opacity: 0.9;
+}
+
+.gex-col .bar.pos {
+  background: linear-gradient(180deg, #34d399, rgba(16, 185, 129, 0.55));
+}
+
+.gex-col .bar.neg {
+  background: linear-gradient(180deg, #fb7185, rgba(244, 63, 94, 0.55));
+}
+
+.gex-col .bar.spot {
+  box-shadow: 0 0 0 2px rgba(247, 248, 248, 0.85);
+}
+
+.gex-col .bar.flip {
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.9);
+}
+
+.gex-col .lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-4);
+  white-space: nowrap;
+  min-height: 12px;
+}
+
+/* Mini tables */
+table.mini {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+table.mini th,
+table.mini td {
+  text-align: right;
+  padding: 7px 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-2);
+}
+
+table.mini th {
+  color: var(--text-4);
+  font-family: var(--font);
+  font-weight: 510;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+table.mini th:first-child,
+table.mini td:first-child {
+  text-align: left;
+}
+
+table.mini .mono,
+.mono {
+  font-family: var(--mono);
+}
+
+table.mini .bull {
+  color: #6ee7b7;
+}
+
+table.mini .bear {
+  color: #fda4af;
+}
+
+/* Term structure bars */
+.bars {
+  display: grid;
+  gap: 8px;
+}
+
+.term-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 72px;
+  gap: 10px;
+  align-items: center;
+}
+
+.term-lab {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 510;
+}
+
+.term-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.term-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.term-fill.pos {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.35), #34d399);
+}
+
+.term-fill.neg {
+  background: linear-gradient(90deg, rgba(244, 63, 94, 0.35), #fb7185);
+}
+
+.term-val {
+  font-size: 12px;
+  text-align: right;
+}
+
+.term-val.pos {
+  color: #6ee7b7;
+}
+
+.term-val.neg {
+  color: #fda4af;
+}
+
+.ladder {
+  min-height: 480px;
+}
+
+.ladder-track {
+  height: 480px;
 }
